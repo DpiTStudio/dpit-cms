@@ -63,7 +63,6 @@ CKEDITOR5_CONFIGS = {
 }
 
 MIDDLEWARE = [
-    # "core.middleware.SiteClosedMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",

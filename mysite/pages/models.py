@@ -12,10 +12,5 @@ class Page(models.Model):
     seo_description = models.CharField(max_length=255, blank=True)
     show_in_menu = models.BooleanField(default=True)
 
-    class Meta:
-        verbose_name = "Страницу"
-        verbose_name_plural = "Страницы"
-        ordering = ["title"]
-
     def __str__(self):
         return self.title
