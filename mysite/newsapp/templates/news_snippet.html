@@ -1,0 +1,6 @@
+{% for item in news|slice:":3" %}
+<div class="news-snippet">
+  <h4>{{ item.title }}</h4>
+  <p>{{ item.created_at }}</p>
+</div>
+{% endfor %}

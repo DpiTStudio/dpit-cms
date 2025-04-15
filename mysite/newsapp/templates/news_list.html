@@ -1,0 +1,23 @@
+<h1>Новости</h1>
+{% for item in page_obj %}
+<div class="news-item">
+  <h2>{{ item.title }}</h2>
+  {% if item.image %}
+  <img src="{{ item.image.url }}" alt="{{ item.title }}">
+  {% endif %}
+  <p>{{ item.created_at }}</p>
+  <div>{{ item.content|truncatewords:30 }}</div>
+</div>
+{% endfor %}
+
+<div class="pagination">
+  {% if page_obj.has_previous %}
+  <a href="?page={{ page_obj.previous_page_number }}">Назад</a>
+  {% endif %}
+
+  <span>Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
+
+  {% if page_obj.has_next %}
+  <a href="?page={{ page_obj.next_page_number }}">Вперёд</a>
+  {% endif %}
+</div>
