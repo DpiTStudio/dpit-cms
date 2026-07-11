@@ -1,0 +1,12 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "djangoTestManager.watchMode": true,
+    "commentTranslate.hover.enabled": false,
+    "commentTranslate.targetLanguage": "ru"
+  }
+}
