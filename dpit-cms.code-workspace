@@ -8,5 +8,9 @@
     "djangoTestManager.watchMode": true,
     "commentTranslate.hover.enabled": false,
     "commentTranslate.targetLanguage": "ru"
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": []
   }
 }
