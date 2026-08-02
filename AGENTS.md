@@ -1,67 +1,80 @@
-# DPIT-CMS AI Agent Guide
+# 🤖 Руководство ИИ-агента для DPIT-CMS
 
-This repository is a Django CMS project inside the `mysite/` folder. Use `mysite/` as the primary codebase root for all Django operations.
+Этот репозиторий представляет собой проект Django CMS, расположенный в папке `mysite/`. Используйте `mysite/` как **основной корень кодовой базы** для всех операций Django.
 
-## Key facts
+---
 
-- The main Django project lives under `mysite/`.
-- Application code is organized as Django apps in `mysite/`: `accounts`, `main`, `news`, `portfolio`, `services`, `reviews`, `cart`, `favorites`, `tickets`, `knowledge_base`, `mail`, `logfiles`, and others.
-- Global settings and initialization are in `mysite/mysite/`.
-- Environment configuration is loaded from `mysite/.env` via `django-environ`.
-- The project uses Django 5.x / Python 3.14 and Celery with Redis.
-- The custom user model is `accounts.User` (`AUTH_USER_MODEL`).
+## 📌 Ключевые факты
 
-## Run commands
+- **Основной проект Django** находится в директории `mysite/`.
+- **Код приложения** организован в виде Django-приложений в `mysite/`: `accounts`, `main`, `news`, `portfolio`, `services`, `reviews`, `cart`, `favorites`, `tickets`, `knowledge_base`, `mail`, `logfiles` и другие.
+- **Глобальные настройки и инициализация** находятся в `mysite/mysite/`.
+- **Конфигурация окружения** загружается из `mysite/.env` с помощью пакета `django-environ`.
+- **Технологический стек**: Django 5.x / Python 3.14 и Celery с Redis.
+- **Пользовательская модель юзера** — `accounts.User` (`AUTH_USER_MODEL`).
 
-From repository root, use `cd mysite` first or run `python mysite/manage.py`.
+---
 
-- Install dependencies: `pip install -r mysite/requirements.txt`
-- Run migrations: `python mysite/manage.py migrate`
-- Create superuser: `python mysite/manage.py createsuperuser`
-- Start local server: `python mysite/manage.py runserver`
-- Run tests: `python mysite/manage.py test`
-- Start Celery worker: `celery -A mysite worker --loglevel=info`
-- Start Celery beat: `celery -A mysite beat --loglevel=info`
+## 💻 Команды запуска
 
-## Important files
+Из корня репозитория сначала выполните `cd mysite` или запускайте команды в формате `python mysite/manage.py`.
 
-- `mysite/README.md` — main project overview
-- `mysite/mysite/README.md` — Django core configuration guide
-- `mysite/mysite/settings.py` — all global project settings
-- `mysite/mysite/SETTINGS_DOCUMENTATION_RU.md` — detailed settings documentation
-- `mysite/manage.py` — Django management entrypoint
-- `mysite/mysite/celery.py` — Celery integration
-- `mysite/mysite/backup_tasks.py` — backup task implementation
+- **Установка зависимостей**: `pip install -r mysite/requirements.txt`
+- **Запуск миграций**: `python mysite/manage.py migrate`
+- **Создание суперпользователя**: `python mysite/manage.py createsuperuser`
+- **Запуск локального сервера**: `python mysite/manage.py runserver`
+- **Запуск тестов**: `python mysite/manage.py test`
+- **Запуск воркера Celery**: `celery -A mysite worker --loglevel=info`
+- **Запуск планировщика Celery beat**: `celery -A mysite beat --loglevel=info`
 
-## Code conventions
+---
 
-- Keep Django app structure standard: `models.py`, `views.py`, `urls.py`, `admin.py`, `tests.py`, templates, and static assets are app-specific.
-- Use the existing app-level `README.md` files for module-specific behavior and business logic.
-- Preserve Russian comments in source files; they document important implementation details and business rules.
-- Prefer making changes in the `mysite/` app folders rather than adding duplicate logic at the root.
-- Media files are served from `mysite/media/`; static assets are stored in `mysite/static/` and `mysite/staticfiles/`.
+## 📁 Важные файлы
 
-## Special project behavior
+- `mysite/README.md` — Основной обзор проекта и его архитектуры.
+- `mysite/mysite/README.md` — Руководство по конфигурации ядра Django.
+- `mysite/mysite/settings.py` — Все глобальные настройки проекта.
+- `mysite/mysite/SETTINGS_DOCUMENTATION_RU.md` — Подробная документация по всем параметрам настроек.
+- `mysite/manage.py` — Точка входа для управления проектом Django.
+- `mysite/mysite/celery.py` — Интеграция и конфигурация Celery.
+- `mysite/mysite/backup_tasks.py` — Реализация задач резервного копирования.
 
-- `main` contains shared utilities, SEO mixins, and file naming helpers.
-- `favorites` uses Django GenericForeignKey for cross-model "favorite" relations.
-- `logfiles` provides admin tools for server log management.
-- `mail` includes IMAP/SMTP integration and mail testing utilities.
-- `backups/` contains backup scripts and archived data.
-- `mysite/mysite/backup_tasks.py` and Celery are used for scheduled backups.
+---
 
-## When you need more details
+## 📏 Соглашения о коде
 
-Check these docs before making large changes:
+- **Стандартная структура**: Поддерживайте классическую структуру приложений Django (`models.py`, `views.py`, `urls.py`, `admin.py`, `tests.py`). Шаблоны и статические ресурсы являются специфичными для каждого приложения.
+- **Локальная документация**: Используйте существующие файлы `README.md` на уровне приложения для понимания поведения и бизнес-логики конкретного модуля.
+- **Комментарии**: Сохраняйте русские комментарии в исходных файлах; они документируют важные детали реализации и бизнес-правила.
+- **Локализация изменений**: Предпочитайте вносить изменения в папки приложений внутри `mysite/`, а не добавлять дублирующую логику в корень проекта.
+- **Статика и медиа**: Медиафайлы обслуживаются из `mysite/media/`; статические ресурсы хранятся в `mysite/static/` и `mysite/staticfiles/`.
 
+---
+
+## ⚡ Особое поведение проекта
+
+- `main` содержит общие утилиты, SEO-миксины и помощники для именования файлов.
+- `favorites` использует Django `GenericForeignKey` для кросс-модельных связей "избранное".
+- `logfiles` предоставляет инструменты администратора для управления журналами сервера прямо из UI.
+- `mail` включает интеграцию IMAP/SMTP и удобные утилиты для тестирования почты.
+- `backups/` содержит скрипты резервного копирования и заархивированные данные.
+- `mysite/mysite/backup_tasks.py` в связке с Celery используются для регулярного автоматического резервного копирования.
+
+---
+
+## 🔍 Когда нужно больше деталей
+
+Ознакомьтесь с этой документацией перед внесением крупных изменений:
 - `mysite/README.md`
 - `mysite/mysite/README.md`
 - `mysite/mysite/SETTINGS_DOCUMENTATION_RU.md`
-- any `README.md` inside the app folder for that app
+- Любой `README.md` внутри папки соответствующего приложения.
 
-## Best advice for AI tasks
+---
 
-- Search first within `mysite/`.
-- For Django issues, inspect `mysite/mysite/settings.py` and app `urls.py` files.
-- Avoid editing database migration history unless the task explicitly requires schema changes.
-- Keep production-sensitive paths and `.env` values abstract; do not hardcode secrets.
+## 💡 Лучшие советы для задач ИИ
+
+1. **Ищите сначала внутри `mysite/`**.
+2. **Для проблем с Django** в первую очередь изучайте `mysite/mysite/settings.py` и файлы `urls.py` приложений.
+3. **Избегайте редактирования истории миграций** базы данных, если задача явно не требует изменения схемы.
+4. **Безопасность**: Держите пути и значения `.env`, чувствительные к продакшену, абстрактными; никогда не хардкодьте секреты в коде.
